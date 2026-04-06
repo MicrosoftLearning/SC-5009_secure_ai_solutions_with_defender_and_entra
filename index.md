@@ -23,6 +23,7 @@ If a more complex setup is required, create a separate markdown file with setup 
 
 <hr>
 
+<!--- old page view
 {% assign labs = site.pages | where_exp:"page", "page.url contains '/Instructions/Labs'" %}
 {% for activity in labs  %}
 {% if activity.lab.title %}
@@ -35,5 +36,22 @@ If a more complex setup is required, create a separate markdown file with setup 
 *{{activity.lab.description}}*
 {% endif %}
 <hr>
+{% endif %}
+{% endfor %}
+-->
+
+{% assign labs = site.pages | where_exp:"page", "page.url contains '/Instructions/Labs'" %}
+
+## Labs
+
+| Module | Lab | Level | Duration | Description |
+| --- | --- | --- | --- | --- |
+{% for activity in labs %}
+{% if activity.lab.title %}
+| {{ activity.lab.module | default: "-" }} 
+| [{{ activity.lab.title }}]({{ site.github.url }}{{ activity.url }}) 
+| {{ activity.lab.level | default: "-" }} 
+| {{ activity.lab.duration | default: "-" }} 
+| {{ activity.lab.description | default: "-" }} |
 {% endif %}
 {% endfor %}
