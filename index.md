@@ -57,7 +57,7 @@ If a more complex setup is required, create a separate markdown file with setup 
 {% for activity in labs %}
 {% if activity.lab.title and activity.lab.description %}
   <li style="margin-bottom: 16px;">
-    <strong>{{ activity.lab.title }}</strong>
+    <span style="font-weight: 600;">{{ activity.lab.title }}</span>
     <div style="margin-top: 4px;">{{ activity.lab.description }}</div>
   </li>
 {% endif %}
