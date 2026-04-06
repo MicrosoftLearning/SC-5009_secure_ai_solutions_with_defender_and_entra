@@ -53,12 +53,12 @@ If a more complex setup is required, create a separate markdown file with setup 
 
 ## Exercise summaries
 
-<ul>
+<ul style="list-style-type: disc; padding-left: 20px;">
 {% for activity in labs %}
 {% if activity.lab.title and activity.lab.description %}
-  <li>
-    <strong>{{ activity.lab.title }}</strong><br>
-    {{ activity.lab.description }}
+  <li style="margin-bottom: 16px;">
+    <strong>{{ activity.lab.title }}</strong>
+    <div style="margin-top: 4px;">{{ activity.lab.description }}</div>
   </li>
 {% endif %}
 {% endfor %}
