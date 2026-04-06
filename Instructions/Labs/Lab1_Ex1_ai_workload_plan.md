@@ -14,7 +14,7 @@ lab:
 
 # Lab 1 - Exercise 1 - Enable data security protections for AI workloads
 
-As a cloud security administrator, you're preparing to secure Azure AI workloads. You need to enable security protections for AI services at the subscription level and configure identity-based access controls. This includes turning on Defender for Cloud plans, enabling data security controls for AI interactions, and assigning roles using Microsoft Entra ID.
+Your organization is deploying AI solutions using Azure AI Foundry and needs to ensure these workloads are protected from day one. As the cloud security administrator, you've been asked to enable threat detection for AI services, restrict who can access Foundry resources, and enforce least-privilege access at the project level so that only the right people can work with sensitive AI models and data.
 
 **Tasks**:
 
@@ -24,7 +24,7 @@ As a cloud security administrator, you're preparing to secure Azure AI workloads
 
 ## Task 1 – Enable protections for AI workloads
 
-In this task, you'll enable Microsoft Defender for Cloud protections for AI services and turn on data security controls for AI interactions at the subscription level.
+Before configuring access controls, you need to make sure threats to your AI services are being detected. In this task, you'll enable Microsoft Defender for Cloud protections and data security controls for AI interactions at the subscription level.
 
 1. Open **Microsoft Edge**, then navigate to `https://portal.azure.com`.
 
@@ -48,9 +48,11 @@ In this task, you'll enable Microsoft Defender for Cloud protections for AI serv
 
 1. Verify the AI services plan shows as **On** on the Defender plans page.
 
+You've successfully enabled protection for AI workloads in Microsoft Defender for Cloud.
+
 ## Task 2 – Control access to AI workloads using Microsoft Entra ID
 
-In this task, you'll assign the Azure AI Developer role to a user using role-based access control (RBAC) on your Azure AI Foundry resource.
+With threat detection in place, you need to control who can access the Foundry resource. In this task, you'll use Azure RBAC to assign the Azure AI Developer role to a group at the resource level.
 
 1. Navigate back to the home page of your Azure subscription.
 
@@ -78,9 +80,11 @@ In this task, you'll assign the Azure AI Developer role to a user using role-bas
 
 1. You should see a notification indicating you successfully added the role assignment.
 
+You've successfully assigned the Azure AI Developer role to a group on your Foundry resource using Microsoft Entra ID.
+
 ## Task 3 – Manage access within Foundry projects
 
-In this task, you'll configure project-level role assignments within an Azure AI Foundry project to control what users can do with specific project resources.
+You've granted access at the resource level, but not everyone needs access to everything. In this task, you'll use the Foundry portal to assign a role at the project level, giving a specific user just enough access to work within a single project.
 
 1. In **Microsoft Edge**, navigate to `https://ai.azure.com`.
 
@@ -101,3 +105,5 @@ In this task, you'll configure project-level role assignments within an Azure AI
 1. Select **Add**.
 
 1. You should see the **Accounting-1223** user assigned to the **Azure AI User** role.
+
+You've successfully assigned project-level access to a user in Microsoft Foundry.
