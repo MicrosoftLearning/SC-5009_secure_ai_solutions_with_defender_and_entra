@@ -1,6 +1,20 @@
+---
+lab:
+  title: Exercise - AI safety and guardrails
+  module: Secure AI workloads
+  description: Create blocklists and configure content filters in Microsoft Foundry to control what AI deployments can accept and produce.
+  duration: 15 minutes
+  level: 200
+  islab: true
+  primarytopics:
+    - Microsoft Foundry
+    - Content filters
+    - Blocklists
+---
+
 # Lab 1 - Exercise 2 - AI safety and guardrails
 
-As a cloud security administrator, you need to configure content safety controls to prevent AI services from processing or generating harmful content. In this exercise, you'll create and manage blocklists in Azure AI Content Safety, then configure and refine content filters to enforce organizational policies.
+Your organization's compliance team has flagged that AI services must not process or generate content containing confidential project codenames, internal product terms, or restricted phrases. As the cloud security administrator, you need to create blocklists to enforce these restrictions and configure content filters to control what your AI deployments can accept and produce.
 
 **Tasks**:
 
@@ -9,58 +23,88 @@ As a cloud security administrator, you need to configure content safety controls
 
 ## Task 1 – Create and manage blocklists
 
-In this task, you'll create a custom blocklist in Azure AI Content Safety to block specific terms and phrases from AI interactions.
+The compliance team has provided a list of terms that should never appear in AI interactions. In this task, you'll create a blocklist in Microsoft Foundry to prevent those terms from being processed or generated.
 
-1. Open **Microsoft Edge**, then navigate to `https://portal.azure.com`.
+1. Open **Microsoft Edge**, then navigate to `https://ai.azure.com`.
 
 1. Sign in with the username and password provided by your lab hosting provider.
 
-1. In the search bar, search for and select **Azure AI Content Safety**.
+1. Select the available Foundry project.
 
-1. Select your Content Safety resource.
+1. In the left sidebar, under **Protect and govern**, select **Guardrails + controls**.
 
-1. In the left navigation, select **Blocklists**.
+1. On the **Guardrails + controls** page, select the **Blocklists** tab.
 
 1. Select **+ Create blocklist**.
 
-1. Enter a **Name** for the blocklist, such as `restricted-terms`.
+1. On the **Create a blocklist** page, enter:
 
-1. Optionally, add a **Description** for the blocklist.
+   - **Name**: `ConfidentialProjectTerms`
+   - **Description**: `Blocks internal codenames and confidential product terms.`
 
-1. Select **Create**.
+1. Select **Create blocklist**.
 
 1. Select the newly created blocklist to open it.
 
-1. Select **+ Add term**.
+1. Select **+ Add new term**.
 
-1. Enter a term or phrase you want to block, then select **Add**.
+1. Ensure **Exact match** is selected, then enter `ProjectNova`, then select **Add term**.
 
-1. Repeat the previous step to add additional terms as needed.
+1. Continue the process to enter these **Exact match** terms:
+
+   - `Starlight`
+   - `Orion-x`
+
+1. Select **+ Add new term**, then select **Regex**.
+
+1. Enter `Contoso\w+`, then select **Add term**.
+
+    > **Note**: This regex pattern matches any term starting with "Contoso" followed by one or more characters, like "ContosoVault" or "ContosoSecure". Using a regex pattern lets you block variations without adding each one individually.
 
 1. Review the blocklist to confirm your terms have been added.
 
+You've successfully created a blocklist to prevent restricted terms from being used in AI interactions.
+
 ## Task 2 – Configure and refine content filters
 
-In this task, you'll configure content filtering settings for your AI deployment, adjusting severity thresholds and applying your custom blocklist to enforce content safety policies.
+With the blocklist in place, you now need to set up broader content filtering. In this task, you'll create a content filter configuration that controls severity thresholds for harmful categories and applies your blocklist to a model deployment.
 
-1. In the Azure portal, navigate to your **Azure AI Foundry** resource.
+1. In the Microsoft Foundry portal, select the back arrow next to **ConfidentialProjectTerms** to go back to the **Guardrails + Controls** page.
 
-1. In the left navigation, select **Content filters**.
+1. Select the **Content filters** tab, then select **+ Create content filter**.
 
-1. Select **+ Create content filter**.
+1. On the **Add basic information** page, in the **Name** field, enter `ContosoAIContentPolicy`.
 
-1. Enter a **Name** for the content filter configuration, such as `organization-content-policy`.
+1. Select **Next**.
 
-1. Under **Input filter**, review the category filters (Hate, Sexual, Violence, Self-harm) and adjust the severity thresholds based on your organizational policy.
+1. On the **Set input filter** page, set the severity thresholds for each category:
 
-1. Under **Output filter**, review and adjust the category filters for generated content.
+   - **Violence**: Medium
+   - **Hate**: Medium
+   - **Sexual**: Medium
+   - **Self-harm**: Medium
 
-1. Under **Blocklists**, select **+ Add blocklist**.
+1. In the **Blocklist** section of the **Set input filter** page, toggle the feature to on.
 
-1. Select the `restricted-terms` blocklist you created in Task 1.
+1. Under **Select built-in or customized blocklist**, select `Profanity` and `ConfidentialProjectTerms`.
 
-1. Select **Create** to save the content filter configuration.
+1. Select **Next**.
 
-1. Apply the content filter to a model deployment by navigating to **Deployments**, selecting a deployment, and associating the content filter.
+1. On the **Set output filter** page, set the severity thresholds for each category:
 
-1. Test the deployment by sending a prompt that includes a blocked term, and verify the request is filtered.
+   - **Violence**: Medium
+   - **Hate**: Medium
+   - **Sexual**: Medium
+   - **Self-harm**: Medium
+
+1. In the **Blocklist** section of the **Set output filter** page, toggle the feature to on.
+
+1. Under **Select built-in or customized blocklist**, select  `Profanity` and `ConfidentialProjectTerms`.
+
+1. Select **Next**.
+
+1. On the **Apply filter to deployments (optional)** page, select **Next**.
+
+1. On the **Review your content filter configurations** page, review your content filter, then select **Create filter**.
+
+You've successfully configured content filters with your compliance blocklist.
