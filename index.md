@@ -61,3 +61,12 @@ If a more complex setup is required, create a separate markdown file with setup 
 
 {% endif %}
 {% endfor %}
+
+## Labs_test
+
+{% assign labs = site.pages | where_exp:"page", "page.url contains '/Instructions/Labs'" %}
+
+| Module | Exercise | Level | Duration | Description |
+| --- | --- | --- | --- | --- |
+{% for activity in labs %}{% if activity.lab.title %}| {{ activity.lab.module | default: " " }} | [{{ activity.lab.title }}]({{ site.github.url }}{{ activity.url }}) | {{ activity.lab.level | default: " " }} | {{ activity.lab.duration | default: " " }} | {{ activity.lab.description | replace: "|", "&#124;" | default: " " }} |
+{% endif %}{% endfor %}
