@@ -14,17 +14,17 @@ lab:
 
 # Lab 1 - Exercise 1 - Enable data security protections for AI workloads
 
-Your organization is deploying AI solutions using Azure AI Foundry and needs to ensure these workloads are protected from day one. As the cloud security administrator, you've been asked to enable threat detection for AI services, restrict who can access Foundry resources, and enforce least-privilege access at the project level so that only the right people can work with sensitive AI models and data.
+Your organization is deploying AI solutions using Azure AI Foundry and needs to ensure these workloads are protected from day one. As the cloud security administrator, you've been asked to enable threat detection for AI services, enforce security policies, and restrict who can access AI workload resources.
 
 **Tasks**:
 
 1. Enable protections for AI workloads
+1. Implement security policies for AI services
 1. Control access to AI workloads using Microsoft Entra ID
-1. Manage access within Foundry projects
 
 ## Task 1 – Enable protections for AI workloads
 
-Before configuring access controls, you need to make sure threats to your AI services are being detected. In this task, you'll enable Microsoft Defender for Cloud protections and data security controls for AI interactions at the subscription level.
+Before configuring access controls, you need to establish security posture management and threat detection for your AI services. In this task, you'll enable Defender CSPM to discover AI workloads and surface security recommendations, then enable the AI services plan to add runtime threat detection and data security for AI interactions.
 
 1. Open **Microsoft Edge**, then navigate to `https://portal.azure.com`.
 
@@ -36,7 +36,11 @@ Before configuring access controls, you need to make sure threats to your AI ser
 
 1. On the **Environment settings** page, select the subscription you want to configure.
 
-1. On the **Defender plans** page, select **On** for **AI services**.
+1. On the **Defender plans** page, select **On** for **Defender CSPM**.
+
+1. Select **Save** to enable the Defender CSPM plan.
+
+1. On the same **Defender plans** page, select **On** for **AI services**.
 
 1. Under **Monitoring coverage** select **Settings** for the AI Services plan.
 
@@ -46,13 +50,39 @@ Before configuring access controls, you need to make sure threats to your AI ser
 
 1. Select **Save** to enable the AI Service protection plan.
 
-1. Verify the AI services plan shows as **On** on the Defender plans page.
+1. Verify both the **Defender CSPM** and **AI services** plans show as **On** on the Defender plans page.
 
-You've successfully enabled protection for AI workloads in Microsoft Defender for Cloud.
+You've successfully enabled posture management and threat protection for AI workloads in Microsoft Defender for Cloud.
 
-## Task 2 – Control access to AI workloads using Microsoft Entra ID
+## Task 2 – Implement security policies for AI services
 
-With threat detection in place, you need to control who can access the Foundry resource. In this task, you'll use Azure RBAC to assign the Azure AI Developer role to a group at the resource level.
+With Defender plans enabled, you need to enforce security requirements on your AI resources using Azure Policy. In this task, you'll assign a built-in policy that restricts network access on Azure AI Services resources, ensuring they aren't exposed to the public internet without controls.
+
+1. In the top left of the Azure page, select **Home** to get back to the home page.
+
+1. From the home page, select **Subscriptions**, then select your Azure subscription.
+
+1. In the left bar of your Azure subscription, expand **Settings**, then select **Policies**.
+
+1. On the **Policies** page, expand **Authoring** > **Definitions**.
+
+1. In the **Search** field, enter `Azure AI Services`, then select the **Azure AI Services resources should restrict network access** policy.
+
+1. On the top left of the page, select **Assign policy**.
+
+1. On the **Basics** tab, leave the defaults selected.
+
+1. Select **Review + create**, then select **Create**.
+
+1. You should receive a notification indicating your policy assignment succeeded.
+
+    > **Note**: Policy assignments can take 5–15 minutes to take effect. Once active, any Azure AI Services resource that allows unrestricted network access will be flagged as non-compliant.
+
+You've successfully assigned a security policy to enforce network restrictions on AI services.
+
+## Task 3 – Control access to AI workloads using Microsoft Entra ID
+
+With protection and policies in place, you need to control who can access AI workload resources. In this task, you'll use Azure RBAC to assign the Azure AI Developer role to a group at the resource level.
 
 1. Navigate back to the home page of your Azure subscription.
 
@@ -81,29 +111,3 @@ With threat detection in place, you need to control who can access the Foundry r
 1. You should see a notification indicating you successfully added the role assignment.
 
 You've successfully assigned the Azure AI Developer role to a group on your Foundry resource using Microsoft Entra ID.
-
-## Task 3 – Manage access within Foundry projects
-
-You've granted access at the resource level, but not everyone needs access to everything. In this task, you'll use the Foundry portal to assign a role at the project level, giving a specific user just enough access to work within a single project.
-
-1. In **Microsoft Edge**, navigate to `https://ai.azure.com`.
-
-1. In Microsoft Foundry, on the left sidebar, scroll down to the bottom to select the **Management center**.
-
-1. In the Management center, under **Resource**, select **Users**.
-
-  You should see the **Accounting Contributors** group with the **Azure AI Developer** role you added in a previous task.
-
-1. In the Management center, under **Project** select **Users**.
-
-1. On the **Manage users in this project** page, select **+ New user**.
-
-1. In the **Add resource users** dialogue, enter, then select `Accounting-1223`.
-
-1. In the **Role** dropdown, select **Azure AI User**.
-
-1. Select **Add**.
-
-1. You should see the **Accounting-1223** user assigned to the **Azure AI User** role.
-
-You've successfully assigned project-level access to a user in Microsoft Foundry.
