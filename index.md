@@ -48,18 +48,16 @@ If a more complex setup is required, create a separate markdown file with setup 
 
 | Module | Exercise | Level | Duration |
 | --- | --- | --- | --- |
-{% for activity in labs %}
-{% if activity.lab.title %}
-| {{ activity.lab.module | default: " " }} | [{{ activity.lab.title }}]({{ site.github.url }}{{ activity.url }}) | {{ activity.lab.level | default: " " }} | {{ activity.lab.duration | default: " " }} |
-{% endif %}
-{% endfor %}
+{% for activity in labs %}{% if activity.lab.title %}| {{ activity.lab.module | default: " " }} | [{{ activity.lab.title }}]({{ site.github.url }}{{ activity.url }}) | {{ activity.lab.level | default: " " }} | {{ activity.lab.duration | default: " " }} |
+{% endif %}{% endfor %}
 
 ## Exercise summaries
 
 {% for activity in labs %}
 {% if activity.lab.title and activity.lab.description %}
 ### [{{ activity.lab.title }}]({{ site.github.url }}{{ activity.url }})
+
 {{ activity.lab.description }}
+
 {% endif %}
 {% endfor %}
-
