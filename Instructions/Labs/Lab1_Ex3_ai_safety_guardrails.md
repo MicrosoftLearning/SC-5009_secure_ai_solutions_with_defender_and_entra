@@ -41,7 +41,7 @@ Resource-level access controls who can reach the Foundry resource, but project-l
 
 1. On the **Manage users in this project** page, select **+ New user**.
 
-1. In the **Add resource users** dialogue, enter, then select `Accounting-1223`.
+1. In the **Add resource users** dialog, enter, then select `Accounting-1223`.
 
 1. In the **Role** dropdown, select **Azure AI User**.
 

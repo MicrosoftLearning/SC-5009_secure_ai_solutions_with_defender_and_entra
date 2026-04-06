@@ -62,7 +62,7 @@ With Defender plans enabled, you need to enforce security requirements on your A
 
 1. From the home page, select **Subscriptions**, then select your Azure subscription.
 
-1. In the left bar of your Azure subscription, expand **Settings**, then select **Policies**.
+1. In the left sidebar of your Azure subscription, expand **Settings**, then select **Policies**.
 
 1. On the **Policies** page, expand **Authoring** > **Definitions**.
 
@@ -90,7 +90,7 @@ With protection and policies in place, you need to control who can access AI wor
 
 1. In the resource group, select the resource with the type **Foundry**.
 
-1. Select **Access control (IAM)** from the left panel of your Foundry resource.
+1. Select **Access control (IAM)** from the left sidebar of your Foundry resource.
 
 1. Select **+ Add** > **Add role assignment**.
 

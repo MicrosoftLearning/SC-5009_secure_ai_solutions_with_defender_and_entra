@@ -44,7 +44,7 @@ In this task, you'll grant the Foundry resource's managed identity least-privile
 
 1. Select **+ Select members**.
 
-1. In the **Select managed identities** fly out, select the dropdown for **Managed identity**, then select **Foundry** from the dropdown.
+1. In the **Select managed identities** flyout, select the dropdown for **Managed identity**, then select **Foundry** from the dropdown.
 
 1. Select the Foundry resource that appears, then select **Select**.
 
@@ -54,19 +54,19 @@ In this task, you'll grant the Foundry resource's managed identity least-privile
 
 1. Select the available Foundry project.
 
-1. Scroll to the bottom of the left panel, then select **Management center**.
+1. Scroll to the bottom of the left sidebar, then select **Management center**.
 
 1. In the left sidebar under **Resource** select **Connected resources**.
 
 1. On the **Manage connected resources in this project** page, select **+ New connection**.
 
-1. In the **Add a connection to external assets** dialogue, search for then select `Key Vault`.
+1. In the **Add a connection to external assets** dialog, search for then select `Key Vault`.
 
-1. In the **Add an Azure Key Vault** dialogue, under **Authentication**, ensure **Account managed by identity** is selected in the drop down, then select **Add connection**.
+1. In the **Add an Azure Key Vault** dialog, under **Authentication**, ensure **Account managed by identity** is selected in the dropdown, then select **Add connection**.
 
 1. Once connected, you will see a notification with a green check mark indicating the connection is successful.
 
-1. Select **Close** to close the dialogue window, and you will see your Key Vault connection in your project.
+1. Select **Close** to close the dialog, and you will see your Key Vault connection in your project.
 
 ## Task 2 – Identify network security risks for AI workloads
 
@@ -78,7 +78,7 @@ In this task, you'll identify security risks in the current networking configura
 
 1. Select the **Key vault** resource.
 
-1. In the left navigation, under **Settings**, select **Networking**.
+1. In the left sidebar, under **Settings**, select **Networking**.
 
 1. On the **Firewalls and virtual networks** tab, note that the key vault is currently set to **Allow public access from all networks**. This means any authenticated identity on the internet can reach it.
 
@@ -92,7 +92,7 @@ In this task, you'll identify security risks in the current networking configura
 
 1. Select the **Foundry** resource.
 
-1. In the left navigation, under **Settings**, select **Networking**.
+1. In the left sidebar, under **Settings**, select **Networking**.
 
 1. Review the network access options. Note the available configurations for controlling inbound and outbound access to the Foundry resource.
 
@@ -108,7 +108,7 @@ In this task, you'll configure diagnostic settings to capture logs and metrics f
 
 1. Select the **Foundry** resource.
 
-1. In the left navigation, under **Monitoring**, select **Diagnostic settings**.
+1. In the left sidebar, under **Monitoring**, select **Diagnostic settings**.
 
 1. Select **+ Add diagnostic setting**.
 
