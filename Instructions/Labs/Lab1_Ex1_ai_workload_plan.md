@@ -14,7 +14,7 @@ lab:
 
 # Lab 1 - Exercise 1 - Enable data security protections for AI workloads
 
-Your organization is deploying AI solutions using Azure AI Foundry and needs to ensure these workloads are protected from day one. As the cloud security administrator, you've been asked to enable threat detection for AI services, enforce security policies, and restrict who can access AI workload resources.
+Your organization is deploying AI solutions using Microsoft Foundry and needs to ensure these workloads are protected from day one. As the cloud security administrator, you've been asked to enable threat detection for AI services, enforce security policies, and restrict who can access AI workload resources.
 
 **Tasks**:
 

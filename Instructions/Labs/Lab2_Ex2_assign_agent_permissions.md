@@ -10,7 +10,7 @@ lab:
     - API permissions
     - Azure RBAC
     - Service principals
-    - Azure AI Foundry
+    - Microsoft Foundry
     - Azure Key Vault
 ---
 
