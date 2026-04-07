@@ -63,3 +63,10 @@ If a more complex setup is required, create a separate markdown file with setup 
 {% endif %}
 {% endfor %}
 </ul>
+
+## table test
+
+| Module | Exercise | Duration | Description |
+| --- | --- | --- | --- |
+{% for activity in labs %}{% if activity.lab.title %}| {{ activity.lab.module | default: " " }} | [{{ activity.lab.title }}]({{ site.github.url }}{{ activity.url }}) | {{ activity.lab.duration | default: " " }} | {{ activity.lab.description | replace: "|", "&#124;" | default: " " }} |
+{% endif %}{% endfor %}
