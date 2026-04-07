@@ -2,7 +2,7 @@
 lab:
   title: Exercise - Enable data security protections for AI workloads
   module: Secure AI workloads
-  description: Enable Microsoft Defender for Cloud protections for AI services and configure data security settings for AI interactions.
+  description: Enable Defender for Cloud protections and data security for AI services.
   duration: 20 minutes
   level: 200
   islab: true

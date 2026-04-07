@@ -1,8 +1,8 @@
 ---
 lab:
-  title: Exercise - AI project security and guardrails
+  title: Exercise - Configure AI project access and guardrails
   module: Secure AI workloads
-  description: Configure project-level access, create blocklists, and set up content filters in Microsoft Foundry to secure AI deployments.
+  description: Configure project access, blocklists, and content filters in Microsoft Foundry.
   duration: 20 minutes
   level: 200
   islab: true
@@ -13,7 +13,7 @@ lab:
     - Access control
 ---
 
-# Lab 1 - Exercise 3 - AI project security and guardrails
+# Lab 1 - Exercise 3 - Configure AI project access and guardrails
 
 Your organization needs to control who can work within AI projects and enforce restrictions on what content AI deployments can process or generate. As the cloud security administrator, you'll assign project-level roles, create blocklists to block restricted terms, and configure content filters.
 

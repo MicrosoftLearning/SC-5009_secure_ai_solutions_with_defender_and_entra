@@ -2,7 +2,7 @@
 lab:
   title: Exercise - Verify and audit AI agent access
   module: Secure AI agent identities
-  description: Review the AI agent's enterprise application configuration, verify API permissions, audit role assignments, and rotate credentials.
+  description: Verify API permissions, audit role assignments, and rotate the AI agent's credentials.
   duration: 15 minutes
   level: 200
   islab: true

@@ -1,8 +1,8 @@
 ---
 lab:
-  title: Exercise - Infrastructure security and monitoring
+  title: Exercise - Secure infrastructure and enable monitoring for AI workloads
   module: Secure AI workloads
-  description: Secure Azure Key Vault access, identify network security risks, and enable diagnostic logging for AI workloads.
+  description: Secure Key Vault access, review network risks, and enable diagnostic logging.
   duration: 20 minutes
   level: 200
   islab: true
@@ -12,7 +12,7 @@ lab:
     - Diagnostic logging
 ---
 
-# Lab 1 - Exercise 2 - Infrastructure security and monitoring
+# Lab 1 - Exercise 2 - Secure infrastructure and enable monitoring for AI workloads
 
 Your organization's AI workloads depend on supporting services like Azure Key Vault for secrets management and network controls for traffic isolation. As the cloud security administrator, you need to secure these infrastructure components and enable monitoring to maintain visibility into AI service activity.
 

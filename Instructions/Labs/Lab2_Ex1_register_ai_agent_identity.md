@@ -2,7 +2,7 @@
 lab:
   title: Exercise - Register an application identity for an AI agent
   module: Secure AI agent identities
-  description: Register an application in Microsoft Entra ID and configure authentication credentials for an AI agent that accesses Azure AI services.
+  description: Register an AI agent application in Microsoft Entra ID and configure its credentials.
   duration: 10 minutes
   level: 200
   islab: true
