@@ -98,7 +98,7 @@ In this task, you'll identify security risks in the current networking configura
 
     > **Note**: In production, you would use a managed virtual network with **Allow Only Approved Outbound** to restrict which external services the Foundry resource can connect to. Combined with private endpoints on dependent resources like Key Vault and Storage, this keeps all AI workload traffic within controlled network boundaries.
 
-1. Based on your review, identify one configuration across Key Vault or the Foundry resource that introduces a security risk, and identify which setting you would change to reduce that risk.
+1. Based on your review, identify a configuration that allows unrestricted public access or uncontrolled outbound connectivity, and determine which setting you would change to limit that exposure.
 
 ## Task 3 – Enable diagnostic logging in Microsoft Foundry
 

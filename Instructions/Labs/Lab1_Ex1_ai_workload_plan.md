@@ -52,6 +52,8 @@ Before configuring access controls, you need to establish security posture manag
 
 1. Verify both the **Defender CSPM** and **AI services** plans show as **On** on the Defender plans page.
 
+    > **Note**: These two plans serve different purposes. Defender CSPM evaluates your AI resources for security posture issues and surfaces recommendations. The AI services plan adds runtime threat detection and data security controls for AI interactions. Together, they cover both proactive posture management and reactive threat protection.
+
 You've successfully enabled posture management and threat protection for AI workloads in Microsoft Defender for Cloud.
 
 ## Task 2 – Implement security policies for AI services
