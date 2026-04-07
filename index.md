@@ -46,7 +46,7 @@ If a more complex setup is required, create a separate markdown file with setup 
 
 {% assign labs = site.pages | where_exp:"page", "page.url contains '/Instructions/Labs'" %}
 
-| Module | Exercise | Duration | Description |
+| Module | Exercise | Description | Duration |
 | --- | --- | --- | --- |
-{% for activity in labs %}{% if activity.lab.title %}| {{ activity.lab.module | default: " " }} | [{{ activity.lab.title | replace: "Exercise - ", "" }}]({{ site.github.url }}{{ activity.url }}) | {{ activity.lab.duration | replace: " minutes", " min" }} | {{ activity.lab.description | replace: "|", "&#124;" | default: " " }} |
+{% for activity in labs %}{% if activity.lab.title %}| {{ activity.lab.module | default: " " }} | [{{ activity.lab.title | replace: "Exercise - ", "" }}]({{ site.github.url }}{{ activity.url }}) | {{ activity.lab.description | replace: "|", "&#124;" | default: " " }} | {{ activity.lab.duration | replace: " minutes", " min" }} |
 {% endif %}{% endfor %}
