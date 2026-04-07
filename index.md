@@ -46,27 +46,7 @@ If a more complex setup is required, create a separate markdown file with setup 
 
 {% assign labs = site.pages | where_exp:"page", "page.url contains '/Instructions/Labs'" %}
 
-| Module | Exercise | Level | Duration |
-| --- | --- | --- | --- |
-{% for activity in labs %}{% if activity.lab.title %}| {{ activity.lab.module | default: " " }} | [{{ activity.lab.title }}]({{ site.github.url }}{{ activity.url }}) | {{ activity.lab.level | default: " " }} | {{ activity.lab.duration | default: " " }} |
-{% endif %}{% endfor %}
-
-## Exercise summaries
-
-<ul style="list-style-type: disc; padding-left: 20px;">
-{% for activity in labs %}
-{% if activity.lab.title and activity.lab.description %}
-  <li style="margin-bottom: 16px;">
-    <span style="font-weight: 600;">{{ activity.lab.title }}</span>
-    <div style="margin-top: 4px;">{{ activity.lab.description }}</div>
-  </li>
-{% endif %}
-{% endfor %}
-</ul>
-
-## table test
-
 | Module | Exercise | Duration | Description |
 | --- | --- | --- | --- |
-{% for activity in labs %}{% if activity.lab.title %}| {{ activity.lab.module | default: " " }} | [{{ activity.lab.title }}]({{ site.github.url }}{{ activity.url }}) | {{ activity.lab.duration | default: " " }} | {{ activity.lab.description | replace: "|", "&#124;" | default: " " }} |
+{% for activity in labs %}{% if activity.lab.title %}| {{ activity.lab.module | default: " " }} | [{{ activity.lab.title }}]({{ site.github.url }}{{ activity.url }}) | {{ activity.lab.duration | replace: " minutes", " min" }} | {{ activity.lab.description | replace: "|", "&#124;" | default: " " }} |
 {% endif %}{% endfor %}
