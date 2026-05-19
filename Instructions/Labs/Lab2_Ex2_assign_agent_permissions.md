@@ -18,7 +18,7 @@ lab:
 
 Your organization's AI workloads use an application identity named **Contoso-AI-App**, registered in Microsoft Entra ID. These workloads need to access Azure AI services, read secrets from Key Vault, and query data from Microsoft Graph. By default, a registered application identity has no permissions. As the identity administrator, you'll configure API permissions and Azure RBAC roles to grant only the access required. This process applies to application identities that run without user interaction.
 
-> **Note**: Application identities use two types of permissions. **API permissions** control access to data through APIs like Microsoft Graph. **Azure RBAC roles** control access to Azure resources such as Foundry and Key Vault. Most AI workloads require both
+> **Note**: Application identities use two types of permissions. **API permissions** control access to data through APIs like Microsoft Graph. **Azure RBAC roles** control access to Azure resources such as Foundry and Key Vault. Most AI workloads require both.
 
 **Tasks**:
 
