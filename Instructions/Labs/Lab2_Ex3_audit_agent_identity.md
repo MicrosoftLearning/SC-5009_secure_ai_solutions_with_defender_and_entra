@@ -17,7 +17,7 @@ lab:
 
 # Lab 2 - Exercise 3 - Verify and audit AI workload access
 
-Your organization's AI workload identity has been configured with API permissions and Azure RBAC roles. Before moving to production, you need to verify the configuration, confirm that access changes are being recorded, and ensure credentials can be rotated safely. As the identity administrator, you'll review the enterprise application's permissions, audit role assignment activity, and practice crede
+Your organization's AI workload identity has been configured with API permissions and Azure RBAC roles. Before moving to production, you need to verify the configuration, confirm that access changes are being recorded, and ensure credentials can be rotated safely. As the identity administrator, you'll review the enterprise application's permissions, audit role assignment activity, and practice credential rotation.
 
 **Tasks**:
 
@@ -28,7 +28,7 @@ Your organization's AI workload identity has been configured with API permission
 
 ## Task 1 – Review the application's API permissions and consent status
 
-When an application identity is configured with API permissions, those permissions appear on the enterprise application's permissions blade. In this task, you'll verify that the permissions are configured correctly and review the consent sta
+When an application identity is configured with API permissions, those permissions appear on the enterprise application's permissions blade. In this task, you'll verify that the permissions are configured correctly and review the consent status.
 
 1. Open **Microsoft Edge**, then navigate to `https://entra.microsoft.com/`.
 
@@ -83,11 +83,11 @@ Azure activity logs capture management operations on Azure resources, including 
 
 1. Review the **Summary** tab, noting the resource, operation, and status.
 
-    > **Note**: Use API permissions to understand what data an identity can access, and activity logs to understand what actions it has taken. Together, these provide full visibility into an application identity's access and behavior.
+    > **Note**: API permissions define what data an identity can access. Activity logs show what actions it has taken.
 
 You've successfully verified that role assignments are recorded in Azure activity logs.
 
-## Task 4 – otate the application client secret
+## Task 4 – Rotate the application client secret
 
 Client secrets expire and can be compromised. When this happens, you need to rotate credentials without disrupting operations. In this task, you'll create a new client secret, verify both secrets are active during the overlap period, then delete the old secret.
 
@@ -99,7 +99,7 @@ Client secrets expire and can be compromised. When this happens, you need to rot
 
 1. In the left sidebar, under **Manage**, select **Certificates & secrets**.
 
-1. On the **Client secrets** tab, confirm you see the existing secret (**AI App authentication**).
+1. On the **Client secrets** tab, confirm you see the existing secret (**AI workload authentication**).
 
 1. Select **+ New client secret**.
 
