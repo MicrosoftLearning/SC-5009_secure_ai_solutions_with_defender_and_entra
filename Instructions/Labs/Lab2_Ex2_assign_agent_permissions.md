@@ -1,8 +1,9 @@
+
 ---
 lab:
-  title: Exercise - Configure permissions for the AI agent
-  module: Secure AI agent identities
-  description: Configure API permissions and assign Azure RBAC roles to the AI agent's service principal.
+  title: Exercise - Configure permissions for AI workloads
+  module: Secure access for AI workloads
+  description: Configure API permissions and assign Azure RBAC roles to an AI workload application identity.
   duration: 15 minutes
   level: 200
   islab: true
@@ -14,21 +15,21 @@ lab:
     - Azure Key Vault
 ---
 
-# Lab 2 - Exercise 2 - Configure permissions for the AI agent
+# Lab 2 - Exercise 2 - Configure permissions for AI workloads
 
-Your organization's AI agent uses an application identity named **Contoso-AI-Agent**, registered in Microsoft Entra ID. The agent needs to access Azure AI services, read secrets from Key Vault, and query user data from Microsoft Graph — but a registered identity has no permissions by default. As the identity administrator, you'll configure both API permissions and Azure RBAC roles to grant the agent only the access it needs. Unlike granting access to users or groups, you're now granting access to an application identity that runs independently — without a user signing in.
+Your organization's AI workloads use an application identity named **Contoso-AI-App**, registered in Microsoft Entra ID. These workloads need to access Azure AI services, read secrets from Key Vault, and query data from Microsoft Graph. By default, a registered application identity has no permissions. As the identity administrator, you'll configure API permissions and Azure RBAC roles to grant only the access required. This process applies to application identities that run without user interaction.
 
-> **Note**: Application identities use two types of permissions. **API permissions** control access to data through APIs like Microsoft Graph. **Azure RBAC roles** control access to Azure resources like Foundry and Key Vault. Most AI agents need both.
+> **Note**: Application identities use two types of permissions. **API permissions** control access to data through APIs like Microsoft Graph. **Azure RBAC roles** control access to Azure resources such as Foundry and Key Vault. Most AI workloads require both
 
 **Tasks**:
 
-1. Add API permissions for the AI agent
-1. Grant the AI agent access to the Foundry resource
-1. Grant the AI agent access to Key Vault
+1. Add API permissions for the application
+1. Grant the application access to the Foundry resource
+1. Grant the application access to Key Vault
 
-## Task 1 – Add API permissions for the AI agent
+## Task 1 – Add API permissions for the application
 
-The AI agent needs to read user profile data from Microsoft Graph to personalize responses. In this task, you'll add an application-level API permission to the agent's app registration, allowing it to query user data without an interactive sign-in.
+The application needs access to Microsoft Graph to retrieve user profile data. In this task, you'll add an application-level API permission to allow access without user sign-in.
 
 1. Open **Microsoft Edge**, then navigate to `https://entra.microsoft.com/`.
 
@@ -36,7 +37,7 @@ The AI agent needs to read user profile data from Microsoft Graph to personalize
 
 1. In the left sidebar, under **Entra ID**, select **App registrations**.
 
-1. Select **Contoso-AI-Agent**.
+1. Select **Contoso-AI-App**.
 
 1. In the left sidebar, under **Manage**, select **API permissions**.
 
@@ -52,13 +53,13 @@ The AI agent needs to read user profile data from Microsoft Graph to personalize
 
 1. Back on the **API permissions** page, review the permissions list. You should see **User.Read.All** listed under **Microsoft Graph** with a status of **Not granted**.
 
-    > **Note**: This permission requires admin consent before the agent can use it. In a production environment, a Global Administrator or Privileged Role Administrator would review and grant consent. The "Not granted" status means the permission is configured but not yet active — this is an important security checkpoint that prevents applications from accessing data without explicit approval.
+    > **Note**: This permission requires admin consent before it can be used. In a production environment, a Global Administrator or Privileged Role Administrator grants consent. The "Not granted" status means the permission is configured but not yet active. This acts as a security checkpoint to prevent access without approval.
 
-You've successfully configured an API permission for the AI agent. At this point, the agent has a configured permission to access data through Microsoft Graph, but it still cannot access Azure resources until RBAC roles are assigned.
+You've successfully configured an API permission. At this point, the application can request access to Microsoft Graph, but it cannot access Azure resources until RBAC roles are assigned.
 
-## Task 2 – Grant the AI agent access to the Foundry resource
+## Task 2 – Grant the application access to the Foundry resource
 
-The AI agent needs to call Azure AI services hosted in your Foundry resource. In this task, you'll assign the Cognitive Services User role to the agent's service principal, allowing it to make inference calls without granting management access.
+The application needs access to Azure AI services hosted in your Foundry resource. In this task, you'll assign the Cognitive Services User role to the application's service principal. This allows inference access without granting management permissions.
 
 1. Open a new tab and navigate to `https://portal.azure.com`.
 
@@ -76,17 +77,17 @@ The AI agent needs to call Azure AI services hosted in your Foundry resource. In
 
 1. On the **Members** tab, select the option for **User, group, or service principal**, then select **+ Select members**.
 
-1. In the **Select members** flyout, search for `Contoso-AI-Agent`, then select the application, then select **Select**.
+1. In the **Select members** flyout, search for `Contoso-AI-App`, then select the application, then select **Select**.
 
 1. Select **Next**, then on the **Review + assign** tab, select **Review + assign**.
 
 1. You should see a notification indicating you successfully added the role assignment.
 
-You've successfully granted the AI agent identity access to Azure AI services on the Foundry resource.
+You've successfully granted the application access to Azure AI services on the Foundry resource.
 
-## Task 3 – Grant the AI agent access to Key Vault
+## Task 3 – Grant the application access to Key Vault
 
-The AI agent retrieves configuration secrets from Azure Key Vault at runtime. In this task, you'll assign the Key Vault Secrets User role to the agent's service principal, giving it read-only access to secrets without the ability to modify them.
+The application retrieves configuration secrets from Azure Key Vault. In this task, you'll assign the Key Vault Secrets User role to the application's service principal, providing read-only access to secrets.
 
 1. Navigate back to the **rg-foundry-lab** resource group.
 
@@ -100,10 +101,10 @@ The AI agent retrieves configuration secrets from Azure Key Vault at runtime. In
 
 1. On the **Members** tab, select the option for **User, group, or service principal**, then select **+ Select members**.
 
-1. In the **Select members** flyout, search for `Contoso-AI-Agent`, then select the application, then select **Select**.
+1. In the **Select members** flyout, search for `Contoso-AI-App`, then select the application, then select **Select**.
 
 1. Select **Next**, then on the **Review + assign** tab, select **Review + assign**.
 
 1. You should see a notification indicating you successfully added the role assignment.
 
-You've successfully granted the AI agent identity read access to secrets in Azure Key Vault.
+You've successfully granted the application read access to secrets in Azure Key Vault.
