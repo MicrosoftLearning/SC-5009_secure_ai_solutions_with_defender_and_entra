@@ -1,4 +1,3 @@
-
 ---
 lab:
   title: Exercise - Configure permissions for AI workloads
