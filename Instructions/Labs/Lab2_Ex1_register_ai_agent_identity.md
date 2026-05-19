@@ -1,8 +1,8 @@
 ---
 lab:
-  title: Exercise - Register an application identity for an AI agent
-  module: Secure AI agent identities
-  description: Register an AI agent application identity in Microsoft Entra ID and configure its credentials.
+  title: Exercise - Register an application identity for AI workloads
+  module: Secure access for AI workloads
+  description: Register an application identity in Microsoft Entra ID to allow AI workloads to securely access Azure services.
   duration: 10 minutes
   level: 200
   islab: true
@@ -12,9 +12,9 @@ lab:
     - Service principals
 ---
 
-# Lab 2 - Exercise 1 - Register an application identity for an AI agent
+# Lab 2 - Exercise 1 - Register an application identity for AI workloads
 
-Your organization is building an AI agent that needs to access Azure AI services and Key Vault programmatically. Unlike interactive users who sign in with their credentials, this agent needs its own application identity to authenticate securely. As the identity administrator, you'll register the application in Microsoft Entra ID and configure its authentication credentials.
+Your organization is deploying AI workloads that interact with Azure AI services and supporting resources such as Key Vault. These workloads run without user interaction, so they require their own application identity for secure authentication. As the identity administrator, you'll register an application in Microsoft Entra ID and configure credentials that enable the workload to authenticate securely.
 
 **Tasks**:
 
@@ -23,7 +23,7 @@ Your organization is building an AI agent that needs to access Azure AI services
 
 ## Task 1 – Register an application in Microsoft Entra ID
 
-AI agents that access Azure services independently need a registered identity in Microsoft Entra ID. In this task, you'll create an app registration that represents the agent, establishing the identity that will be used for authentication and authorization.
+AI workloads that access Azure services without user interaction need their own application identity in Microsoft Entra ID. In this task, you'll create an app registration that represents the workload and enables it to authenticate and access resources securely.
 
 1. Open **Microsoft Edge**, then navigate to `https://entra.microsoft.com/`.
 
@@ -35,28 +35,28 @@ AI agents that access Azure services independently need a registered identity in
 
 1. On the **Register an application** page, enter:
 
-   - **Name**: `Contoso-AI-Agent`
+   - **Name**: `Contoso-AI-App`
    - **Supported account types**: Leave the default **Single tenant only** option selected.
 
 1. Leave **Redirect URI** blank.
 
-    > **Note**: This agent authenticates using client credentials, not interactive sign-in, so it doesn't need a redirect URI. Redirect URIs are used for applications that require users to sign in through a browser.
+    > **Note**: This application uses client credentials for authentication rather than interactive sign-in, so it doesn’t require a redirect URI. Redirect URIs are used for applications that involve user sign-in through a browser.
 
 1. Select **Register**.
 
-You've successfully registered an application identity for the AI agent in Microsoft Entra ID.
+You've successfully registered an application identity for the AI workload in Microsoft Entra ID.
 
 ## Task 2 – Configure authentication and identify the service principal
 
-The app registration defines the application, but the agent needs a credential to prove its identity. In this task, you'll create a client secret for authentication, then locate the corresponding service principal — the identity object that gets assigned roles and permissions.
+The app registration defines the application, but it needs credentials to authenticate. In this task, you'll create a client secret, then locate the corresponding service principal — the identity object that gets assigned roles and permissions.
 
-1. On the **Contoso-AI-Agent** app registration page, in the left sidebar under **Manage**, select **Certificates & secrets**.
+1. On the **Contoso-AI-App** app registration page, in the left sidebar under **Manage**, select **Certificates & secrets**.
 
 1. Select the **Client secrets** tab, then select **+ New client secret**.
 
 1. In the **Add a client secret** flyout, enter:
 
-   - **Description**: `AI agent authentication`
+   - **Description**: `AI workload authentication`
    - **Expires**: **180 days (6 months)**
 
 1. Select **Add**.
@@ -67,10 +67,10 @@ The app registration defines the application, but the agent needs a credential t
 
 1. In the left panel under Entra ID, select **Enterprise applications**.
 
-1. In the search field, enter `Contoso-AI-Agent`, then select the application.
+1. In the search field, enter `Contoso-AI-App`, then select the application.
 
-1. On the **Contoso-AI-Agent** enterprise application page, confirm the application is listed.
+1. On the **Contoso-AI-App** enterprise application page, confirm the application is listed.
 
-    > **Note**: The app registration defines what the application is. The enterprise application is the service principal — the identity object in your tenant that gets assigned roles and permissions. When you grant access to Azure resources, you assign roles to this service principal.
+    > **Note**: The app registration defines the application. The enterprise application is the service principal. This is the identity in your tenant that gets assigned roles and permissions. When you grant access to Azure resources, you assign roles to this service principal.
 
-You've successfully configured authentication credentials and identified the service principal for the AI agent.
+You've successfully configured authentication credentials and identified the service principal for the AI workload.
